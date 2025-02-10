@@ -31,6 +31,9 @@ func _ready() -> void:
 	host_settings.visible = false
 	
 	Global.server_ping_timer.timeout.connect(check_users)
+	
+	if LaunchArgs.server:
+		_on_host_2_pressed()
 
 func _physics_process(delta: float) -> void:
 	if LocalUserData.connected:
