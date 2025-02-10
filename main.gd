@@ -107,7 +107,7 @@ func do_thing_to_user(usrnm:String, action:String):
 func message_rpc_client(usrnm, data, usrcolor, usrsending):
 	if usrsending == LocalUserData.username:
 		Global.ping_time_out.stop()
-		messages.text += str("[color=", usrcolor, "]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
+		messages.text += str("\n", "[color=", usrcolor, "]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data)
 
 @rpc ("any_peer", "call_local")
 func send_out_username_request():
