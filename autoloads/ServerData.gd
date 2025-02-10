@@ -4,7 +4,6 @@ var connectedUsers:int = 0
 
 var curIP:String
 var favIPs = []
-# remember: "82.65.192.27" is remidu's server
 
 var connectedUsersList:Array = []
 
