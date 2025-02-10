@@ -14,7 +14,7 @@ a very ugly and ba- i mean beautiful and wonderful ui thats allows you to put se
 ![obraz](https://github.com/user-attachments/assets/a372f5ce-d505-4072-8ee4-24b3117c3828)
 
 # the ability to host your own servers
-tired of discord's barely working servers that are held together by ducttape? well no more, now its YOUR servers held together by MY shitty code (you need to port forward the router im too broke) using my (barely working) "pseudo-dedicated" pisscord server
+tired of discord's barely working servers that are held together by ducttape? well no more, now its YOUR servers held together by (mostly) MY shitty code (you need to port forward the router im too broke) using my (barely working) "pseudo-dedicated" pisscord server
 
 ![obraz](https://github.com/user-attachments/assets/c7959a78-f9f0-468a-9bd1-b9fedfee425f)
 
