@@ -101,7 +101,7 @@ offset_bottom = 303.0
 offset_top = 696.0
 offset_right = 40.0
 offset_bottom = 719.0
-text = "1.4.1"
+text = "1.4.3"
 
 [node name="censorIP" type="CheckBox" parent="host-join"]
 offset_left = 840.0
