@@ -24,7 +24,6 @@ LocalUserData="*res://autoloads/LocalUserData.gd"
 ServerData="*res://autoloads/ServerData.gd"
 TextFormatting="*res://autoloads/TextFormatting.gd"
 Global="*res://autoloads/global.tscn"
-DevShit="*res://autoloads/DevShit.gd"
 SaveData="*res://autoloads/SaveData.gd"
 LaunchArgs="*res://autoloads/LaunchArgs.gd"
 
