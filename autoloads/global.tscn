@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxq0fgvn1mm8n"]
+
+[ext_resource type="Script" path="res://autoloads/global.gd" id="1_7u3wf"]
+
+[node name="Global" type="Node"]
+script = ExtResource("1_7u3wf")
+
+[node name="pingTimeOut" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="serverPing" type="Timer" parent="."]

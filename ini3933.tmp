@@ -1,0 +1,222 @@
+[gd_scene load_steps=2 format=3 uid="uid://c287o2rpdexd8"]
+
+[ext_resource type="Script" path="res://init.gd" id="1_ahvmq"]
+
+[node name="init" type="Node2D"]
+script = ExtResource("1_ahvmq")
+
+[node name="host-join" type="Node2D" parent="."]
+
+[node name="host" type="Button" parent="host-join"]
+offset_left = 496.0
+offset_top = 416.0
+offset_right = 539.0
+offset_bottom = 447.0
+text = "host"
+
+[node name="join2" type="Button" parent="host-join"]
+offset_left = 592.0
+offset_top = 416.0
+offset_right = 697.0
+offset_bottom = 447.0
+text = "join as guest"
+
+[node name="join" type="Button" parent="host-join"]
+offset_left = 752.0
+offset_top = 416.0
+offset_right = 795.0
+offset_bottom = 447.0
+text = "join"
+
+[node name="LineEdit" type="LineEdit" parent="host-join"]
+offset_left = 456.0
+offset_top = 320.0
+offset_right = 830.0
+offset_bottom = 351.0
+max_length = 20
+
+[node name="Label" type="Label" parent="host-join/LineEdit"]
+layout_mode = 0
+offset_left = -160.0
+offset_right = -5.0
+offset_bottom = 32.0
+text = "username:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ipEdit" type="LineEdit" parent="host-join"]
+offset_left = 456.0
+offset_top = 360.0
+offset_right = 832.0
+offset_bottom = 391.0
+text = "localhost"
+max_length = 20
+
+[node name="Label" type="Label" parent="host-join/ipEdit"]
+layout_mode = 0
+offset_left = -160.0
+offset_right = -5.0
+offset_bottom = 32.0
+text = "server ip:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="portEdit" type="LineEdit" parent="host-join"]
+offset_left = 1336.0
+offset_top = 360.0
+offset_right = 1536.0
+offset_bottom = 391.0
+placeholder_text = "enter server port"
+max_length = 20
+
+[node name="errorLabel" type="Label" parent="host-join"]
+offset_left = 456.0
+offset_top = 280.0
+offset_right = 496.0
+offset_bottom = 303.0
+
+[node name="Label" type="Label" parent="host-join"]
+offset_top = 696.0
+offset_right = 40.0
+offset_bottom = 719.0
+text = "1.0.2"
+
+[node name="censorIP" type="CheckBox" parent="host-join"]
+offset_left = 840.0
+offset_top = 360.0
+offset_right = 939.0
+offset_bottom = 391.0
+text = "censor IP"
+
+[node name="wait" type="Node2D" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="wait"]
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_font_sizes/font_size = 32
+text = "please wait..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="chatShit" type="Node2D" parent="."]
+
+[node name="layer" type="CanvasLayer" parent="chatShit"]
+visible = false
+
+[node name="Control" type="Control" parent="chatShit/layer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="messages-old" type="TextEdit" parent="chatShit/layer/Control"]
+self_modulate = Color(1, 1, 1, 0.415686)
+layout_mode = 0
+offset_left = -612.0
+offset_top = -332.0
+offset_right = 652.0
+offset_bottom = 244.0
+editable = false
+
+[node name="messages" type="RichTextLabel" parent="chatShit/layer/Control"]
+layout_mode = 0
+offset_left = -612.0
+offset_top = -332.0
+offset_right = 652.0
+offset_bottom = 244.0
+focus_mode = 2
+bbcode_enabled = true
+scroll_following = true
+selection_enabled = true
+
+[node name="message" type="LineEdit" parent="chatShit/layer/Control"]
+layout_mode = 0
+offset_left = -612.0
+offset_top = 252.0
+offset_right = 604.0
+offset_bottom = 283.0
+placeholder_text = "type yo shit here"
+
+[node name="leave" type="Button" parent="chatShit/layer/Control"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 340.0
+offset_right = 549.0
+offset_bottom = 371.0
+text = "leave"
+
+[node name="send" type="Button" parent="chatShit/layer/Control"]
+layout_mode = 0
+offset_left = 604.0
+offset_top = 252.0
+offset_right = 650.0
+offset_bottom = 283.0
+text = "send"
+
+[node name="info" type="Label" parent="chatShit/layer/Control"]
+layout_mode = 0
+offset_left = -612.0
+offset_top = 348.0
+offset_right = -121.0
+offset_bottom = 371.0
+text = "username: john roblox | connected to: localhost | ping: 2137ms"
+
+[node name="usernameColor" type="OptionButton" parent="chatShit/layer/Control"]
+layout_mode = 0
+offset_left = 564.0
+offset_top = -332.0
+offset_right = 652.0
+offset_bottom = -301.0
+selected = 0
+item_count = 10
+popup/item_0/text = "white"
+popup/item_1/text = "red"
+popup/item_1/id = 1
+popup/item_2/text = "green"
+popup/item_2/id = 2
+popup/item_3/text = "blue"
+popup/item_3/id = 3
+popup/item_4/text = "cyan"
+popup/item_4/id = 4
+popup/item_5/text = "purple"
+popup/item_5/id = 5
+popup/item_6/text = "black"
+popup/item_6/id = 6
+popup/item_7/text = "gold"
+popup/item_7/id = 7
+popup/item_8/text = "pink"
+popup/item_8/id = 8
+popup/item_9/text = "yellow"
+popup/item_9/id = 9
+
+[node name="clear" type="Button" parent="chatShit/layer/Control"]
+layout_mode = 0
+offset_left = 564.0
+offset_top = 340.0
+offset_right = 648.0
+offset_bottom = 371.0
+text = "clear chat"
+
+[node name="MarginContainer" type="MarginContainer" parent="chatShit/layer/Control"]
+layout_mode = 0
+offset_left = -556.0
+offset_top = -304.0
+offset_right = -516.0
+offset_bottom = -264.0
+
+[connection signal="pressed" from="host-join/host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="host-join/join2" to="." method="_on_join_2_pressed"]
+[connection signal="pressed" from="host-join/join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="chatShit/layer/Control/leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="chatShit/layer/Control/send" to="." method="_on_send_pressed"]
+[connection signal="item_selected" from="chatShit/layer/Control/usernameColor" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="chatShit/layer/Control/clear" to="." method="_on_clear_pressed"]

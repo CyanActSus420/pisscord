@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://5g14pafyrboe"]
+
+[ext_resource type="Script" path="res://other shit/fav_server.gd" id="1_8de33"]
+
+[node name="FavServer" type="Control" groups=["fav_server"]]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8de33")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 128.0
+offset_bottom = 55.0
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 24.0
+offset_right = 168.0
+offset_bottom = 55.0
+text = "X"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 168.0
+offset_bottom = 66.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

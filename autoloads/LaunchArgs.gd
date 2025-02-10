@@ -1,0 +1,9 @@
+extends Node
+
+var testArg = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	var args = Array(OS.get_cmdline_args())
+	if args.has("-test"):
+		testArg = true
