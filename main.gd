@@ -31,9 +31,6 @@ func _ready() -> void:
 	host_settings.visible = false
 	
 	Global.server_ping_timer.timeout.connect(check_users)
-	
-	if LaunchArgs.server:
-		_on_host_2_pressed()
 
 func _physics_process(delta: float) -> void:
 	if LocalUserData.connected:
@@ -50,6 +47,8 @@ func _physics_process(delta: float) -> void:
 	
 	$chatShit/layer/chat/info2.visible = LocalUserData.host
 	ip_edit.secret = censor_ip.button_pressed
+	
+	TextFormatting.temp = []
 
 func _on_host_2_pressed() -> void:
 	var peer = ENetMultiplayerPeer.new()
@@ -113,30 +112,25 @@ func send_out_username_request():
 	if !LocalUserData.dedicated_server:
 		rpc("return_username_request", LocalUserData.username)
 	else:
-		get_total_users()
+		rpc("send_out_total_users", ServerData.connectedUsersList.size())
 
 @rpc ("any_peer", "call_local")
 func return_username_request(usrnm):
 	if LocalUserData.host:
 		ServerData.connectedUsersList.append(usrnm)
-		get_total_users()
-
-func get_total_users():
-	ServerData.connectedUsersString = ""
-	for i in ServerData.connectedUsersList.size():
-		ServerData.connectedUsersString += "\n" + ServerData.connectedUsersList[i]
-	await get_tree().create_timer(1).timeout
-	rpc("update_connected_users", ServerData.connectedUsersString, ServerData.connectedUsersList.size()) 
+		rpc("send_out_total_users", ServerData.connectedUsersList.size())
 
 @rpc ("any_peer", "call_local")
-func update_connected_users(label_text:String, amount:int):
-	$"chatShit/layer/hostSettings/Label2".text = "connected users: " + label_text
+func send_out_total_users(amount:int):
 	ServerData.connectedUsers = amount
+	$"chatShit/layer/hostSettings/Label2".text = "connected users: " 
+	for i in ServerData.connectedUsersList.size():
+		$"chatShit/layer/hostSettings/Label2".text += "\n" + ServerData.connectedUsersList[i]
 
 func check_users():
-	ServerData.connectedUsersString = ""
 	ServerData.connectedUsersList = []
 	rpc("send_out_username_request")
+	
 
 func join_server(serverip:String):
 	var peer = ENetMultiplayerPeer.new()
