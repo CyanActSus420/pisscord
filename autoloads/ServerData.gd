@@ -5,6 +5,7 @@ var connectedUsers:int = 0
 var curIP:String
 var favIPs = []
 
+var connectedUsersString:String = ""
 var connectedUsersList:Array = []
 
 func _ready():

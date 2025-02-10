@@ -10,3 +10,4 @@ wait_time = 5.0
 one_shot = true
 
 [node name="serverPing" type="Timer" parent="."]
+wait_time = 2.0
