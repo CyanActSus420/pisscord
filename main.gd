@@ -12,6 +12,7 @@ extends Node2D
 
 @onready var chat: Control = $chatShit/layer/chat
 @onready var username_color: OptionButton = $chatShit/layer/chat/usernameColor
+@onready var label_color: Label = $chatShit/layer/chat/usernameColor/Label
 @onready var messages: RichTextLabel = $chatShit/layer/chat/messages
 @onready var message = $chatShit/layer/chat/message
 @onready var send: Button = $chatShit/layer/chat/send
@@ -32,6 +33,18 @@ func _ready() -> void:
 	
 	Global.server_ping_timer.timeout.connect(check_users)
 	
+	if SaveData.load_from_config("color"):
+		LocalUserData.color = SaveData.load_from_config("color")
+	else:
+		SaveData.save_to_config("color", "white")
+		
+	if not SaveData.load_from_config("name"):
+		SaveData.save_to_config("name", "The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly, but gets faster each minute after you hear this signal. [beep] A single lap should be completed each time you hear this sound. [ding] Remember to run in a straight line, and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark, get ready, start.")
+		# the shit above is funny, dont @ me
+		# i couldve put the whole vaporeon copypasta if i wanted, so be happy i only put the fitnessgram pacer test lmfao
+		# - remidu64
+	
+	
 	if LaunchArgs.server:
 		_on_host_2_pressed()
 
@@ -50,6 +63,7 @@ func _physics_process(delta: float) -> void:
 	
 	$chatShit/layer/chat/info2.visible = LocalUserData.host
 	ip_edit.secret = censor_ip.button_pressed
+	label_color.text = LocalUserData.color
 	
 	TextFormatting.temp = []
 
@@ -60,7 +74,7 @@ func _on_host_2_pressed() -> void:
 	multiplayer.multiplayer_peer = peer
 	LocalUserData.host = true
 	LocalUserData.dedicated_server = true
-	DisplayServer.window_set_title("pisscord (dedicated server mode)") 
+	DisplayServer.window_set_title("pisscord (dedicated server mode)")
 	
 	host_join.visible = false
 	chat.visible = false
@@ -150,8 +164,11 @@ func join_server(serverip:String):
 func joined(serverip:String):
 	host_join.hide()
 	wait.show()
-	if !LocalUserData.guest:
+	if !LocalUserData.guest and user_edit.text != "john roblox" and user_edit.text:
 		LocalUserData.username = user_edit.text
+		SaveData.save_to_config("name", user_edit.text)
+	elif !LocalUserData.guest:
+		LocalUserData.username = SaveData.load_from_config("name")
 	else:
 		LocalUserData.username = "Guest %s" % randi_range(0, 10000) 
 	await get_tree().create_timer(1).timeout
@@ -162,12 +179,13 @@ func joined(serverip:String):
 		if LocalUserData.username == "john roblox":
 			triggerError("this username is not allowed (don't ask.)")
 		
+		
 		LocalUserData.serverIP = serverip
 		LocalUserData.serverPort = int(ip_edit.text)
 		LocalUserData.connected = true
 		addUser()
 	else:
-		triggerError("please input an actual username")
+		triggerError("please put an actual username")
 
 func addUser(guests_allowed:bool = true):
 	rpc("message_rpc","[SERVER]",str(LocalUserData.username) + " has joined", "sky_blue")
@@ -201,6 +219,7 @@ func _on_send_pressed() -> void:
 
 func _on_option_button_item_selected(index: int) -> void:
 	LocalUserData.color = username_color.get_item_text(index)
+	SaveData.save_to_config("color", LocalUserData.color)
 
 func _on_join_2_pressed() -> void:
 	if ip_edit.text != "":
@@ -218,7 +237,7 @@ func _on_leave_pressed() -> void:
 
 func _on_fav_pressed() -> void:
 	if ServerData.favIPs.size() == 9:
-		triggerError("cant add more servers to fav list (i gotta rewrite this shit FAST)")
+		triggerError("cant add more servers to fav list (i gotta rewrite this shit FAST)") # this shit aint never gon get rewrote lmfao
 		return
 	ServerData.add_fav_server(ip_edit.text)
 	$"host-join/censorIP/fav_server_list".reload()
