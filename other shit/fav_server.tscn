@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://5g14pafyrboe"]
+[gd_scene load_steps=3 format=3 uid="uid://5g14pafyrboe"]
 
 [ext_resource type="Script" path="res://other shit/fav_server.gd" id="1_8de33"]
+[ext_resource type="Theme" uid="uid://0nsvujc5l0h0" path="res://themes/main.tres" id="2_sokms"]
 
 [node name="FavServer" type="Control" groups=["fav_server"]]
 layout_mode = 3
@@ -10,21 +11,24 @@ script = ExtResource("1_8de33")
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_top = 24.0
-offset_right = 128.0
+offset_right = 216.0
 offset_bottom = 55.0
+theme = ExtResource("2_sokms")
+text = "localhost"
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 136.0
+offset_left = 224.0
 offset_top = 24.0
-offset_right = 168.0
+offset_right = 256.0
 offset_bottom = 55.0
+theme = ExtResource("2_sokms")
 text = "X"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_top = 64.0
-offset_right = 168.0
+offset_right = 256.0
 offset_bottom = 66.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
