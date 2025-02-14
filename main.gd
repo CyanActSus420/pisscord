@@ -114,6 +114,8 @@ func message_rpc(usrnm, data, usrcolor):
 	if !LocalUserData.dedicated_server:
 		if usrcolor == "rainbow":
 			messages.text += str("[rainbow]", usrnm, ": [/rainbow]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
+		elif usrcolor == "piss yellow":
+			messages.text += str("[color=goldenrod]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
 		else:
 			messages.text += str("[color=", usrcolor, "]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
 

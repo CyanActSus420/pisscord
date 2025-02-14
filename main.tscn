@@ -121,7 +121,7 @@ offset_top = 704.0
 offset_right = 48.0
 offset_bottom = 720.0
 theme = ExtResource("2_vfopn")
-text = "1.6"
+text = "1.6.1"
 
 [node name="fav_server_list" parent="host-join" instance=ExtResource("2_kt02t")]
 position = Vector2(16, 16)
@@ -250,7 +250,7 @@ offset_right = 652.0
 offset_bottom = -277.0
 theme = ExtResource("2_vfopn")
 selected = 0
-item_count = 17
+item_count = 18
 popup/item_0/text = "white"
 popup/item_1/text = "red"
 popup/item_1/id = 1
@@ -284,6 +284,8 @@ popup/item_15/text = "orange"
 popup/item_15/id = 15
 popup/item_16/text = "rainbow"
 popup/item_16/id = 16
+popup/item_17/text = "piss yellow"
+popup/item_17/id = 17
 
 [node name="Label" type="Label" parent="chatShit/layer/chat/usernameColor"]
 layout_mode = 0
