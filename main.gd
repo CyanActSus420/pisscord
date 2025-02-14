@@ -2,6 +2,7 @@ extends Node2D
 @onready var host_join: Node2D = $"host-join"
 @onready var chat_shit: CanvasLayer = $chatShit/layer
 
+# join shit
 @onready var host: Button = $"host-join/host"
 @onready var join: Button = $"host-join/join"
 @onready var error_label: Label = $"host-join/errorLabel"
@@ -10,15 +11,24 @@ extends Node2D
 @onready var user_edit: LineEdit = $"host-join/LineEdit"
 @onready var censor_ip: CheckBox = $"host-join/censorIP"
 
+# "please wait" screen
+@onready var wait: Node2D = $wait
+
+# general chat node
 @onready var chat: Control = $chatShit/layer/chat
+# chat shit
+@onready var messages_bg: TextEdit = $"chatShit/layer/chat/messages-old"
 @onready var username_color: OptionButton = $chatShit/layer/chat/usernameColor
 @onready var label_color: Label = $chatShit/layer/chat/usernameColor/Label
 @onready var messages: RichTextLabel = $chatShit/layer/chat/messages
 @onready var message = $chatShit/layer/chat/message
 @onready var send: Button = $chatShit/layer/chat/send
 @onready var info: Label = $chatShit/layer/chat/info
-@onready var wait: Node2D = $wait
+@onready var leave_button: Button = $chatShit/layer/chat/leave
+@onready var clear: Button = $chatShit/layer/chat/clear
+@onready var ping_button: Button = $chatShit/layer/chat/ping
 
+# host settings screen
 @onready var host_settings: Control = $chatShit/layer/hostSettings
 
 var msg:String
@@ -44,9 +54,10 @@ func _ready() -> void:
 		# i couldve put the whole vaporeon copypasta if i wanted, so be happy i only put the fitnessgram pacer test lmfao
 		# - remidu64
 	
-	
 	if LaunchArgs.server:
 		_on_host_2_pressed()
+	
+	ThemeManager.reload_theme()
 
 func _physics_process(delta: float) -> void:
 	if LocalUserData.connected:
@@ -63,7 +74,6 @@ func _physics_process(delta: float) -> void:
 	
 	$chatShit/layer/chat/info2.visible = LocalUserData.host
 	ip_edit.secret = censor_ip.button_pressed
-	label_color.text = LocalUserData.color
 	
 	TextFormatting.temp = []
 
@@ -203,7 +213,7 @@ func leave(reason:String):
 	chat_shit.hide()
 	await get_tree().create_timer(1).timeout
 	LocalUserData.host = false
-	LocalUserData.connected = false
+	LocalUserData.leave = false
 	host_join.show()
 	wait.hide()
 	messages.text = ""
@@ -240,7 +250,7 @@ func _on_fav_pressed() -> void:
 		triggerError("cant add more servers to fav list (i gotta rewrite this shit FAST)") # this shit aint never gon get rewrote lmfao
 		return
 	ServerData.add_fav_server(ip_edit.text)
-	$"host-join/censorIP/fav_server_list".reload()
+	$"host-join/fav_server_list".reload()
 
 func _on_ping_pressed() -> void:
 	print("shit")

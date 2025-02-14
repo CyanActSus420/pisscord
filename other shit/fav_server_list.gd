@@ -6,7 +6,7 @@ const FAV_SERVER_NODE = preload("res://other shit/fav_server.tscn")
 
 func _ready():
 	Global.fav_server_list = self
-	#await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1).timeout
 	reload()
 
 func reload():
