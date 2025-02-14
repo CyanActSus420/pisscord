@@ -1,6 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://0nsvujc5l0h0"]
-
-[ext_resource type="FontFile" uid="uid://cca8gapiom8r" path="res://assets/fonts/PixeloidSans.otf" id="1_253y4"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://0nsvujc5l0h0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blk4j"]
 border_width_left = 2
@@ -72,11 +70,7 @@ bg_color = Color(0.099986, 0.099986, 0.099986, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqfge"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="FontVariation" id="FontVariation_47yrh"]
-base_font = ExtResource("1_253y4")
-
 [resource]
-default_font = SubResource("FontVariation_47yrh")
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0, 0, 0, 0.5)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)

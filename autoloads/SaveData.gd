@@ -41,6 +41,8 @@ func create_custom_theme():
 		user_theme.set_value("chat-menu", "clear_position", ThemeManager.default_clear_position)
 		user_theme.set_value("chat-menu", "ping_size", ThemeManager.default_ping_size)
 		user_theme.set_value("chat-menu", "ping_position", ThemeManager.default_ping_position)
+		user_theme.set_value("chat-menu", "info_position", ThemeManager.default_info_position)
+		user_theme.set_value("chat-menu", "usrcol_position", ThemeManager.default_usrcol_position)
 		
 		user_theme.save(theme_path)
 

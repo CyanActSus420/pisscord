@@ -13,6 +13,8 @@ var default_clear_size = Vector2(168, 31)
 var default_clear_position = Vector2(484, 340)
 var default_ping_size = Vector2(184, 31)
 var default_ping_position = Vector2(292, 340)
+var default_info_position = Vector2(-612, 316)
+var default_usrcol_position = Vector2(484, -308)
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset_theme"):
@@ -36,3 +38,5 @@ func reload_theme():
 	Global.main.ping_button.position = SaveData.load_custom_theme_property("chat-menu", "ping_position")
 	Global.main.clear.size = SaveData.load_custom_theme_property("chat-menu", "clear_size")
 	Global.main.clear.position = SaveData.load_custom_theme_property("chat-menu", "clear_position")
+	Global.main.info.position = SaveData.load_custom_theme_property("chat-menu", "info_position")
+	Global.main.username_color.position = SaveData.load_custom_theme_property("chat-menu", "usrcol_position")
