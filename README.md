@@ -3,27 +3,27 @@ its discord but very very bad and shitty and also open source
 
 sorta inspired by old IRC chats, made partially because discord pissed me off
 ## features
-# text messages
+### text messages
 you can send text messages to other people that are connected to the server
 
 ![obraz](https://github.com/user-attachments/assets/d498db2a-652e-4a6d-b7fd-6555b7851045)
 
-# ui
+### ui
 a very ugly and ba- i mean beautiful and wonderful ui thats allows you to put servers as favorites so you dont have to type out the same ip 70 times
 
 ![obraz](https://github.com/user-attachments/assets/a372f5ce-d505-4072-8ee4-24b3117c3828)
 
-# the ability to host your own servers
+### the ability to host your own servers
 tired of discord's barely working servers that are held together by ducttape? well no more, now its YOUR servers held together by (mostly) MY shitty code (you need to port forward the router im too broke) using my (barely working) "pseudo-dedicated" pisscord server
 
 ![obraz](https://github.com/user-attachments/assets/c7959a78-f9f0-468a-9bd1-b9fedfee425f)
 
-# joining servers as guest
+### joining servers as guest
 do you want to say shit that would get you cancelled? well worry not! now you can just join as a guest and nobody will know who you are!
 
 ![obraz](https://github.com/user-attachments/assets/01bb7033-7711-49c4-a377-cc6b4d42c4f1)
 
-# i fucking ran out of features
+### i fucking ran out of features
 fuck
 
 ## ok for real tho
