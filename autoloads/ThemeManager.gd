@@ -40,3 +40,4 @@ func reload_theme():
 	Global.main.clear.position = SaveData.load_custom_theme_property("chat-menu", "clear_position")
 	Global.main.info.position = SaveData.load_custom_theme_property("chat-menu", "info_position")
 	Global.main.username_color.position = SaveData.load_custom_theme_property("chat-menu", "usrcol_position")
+	LocalUserData.color = SaveData.load_from_config("color")
