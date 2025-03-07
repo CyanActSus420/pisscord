@@ -253,6 +253,7 @@ theme = ExtResource("2_vfopn")
 selected = 0
 item_count = 18
 popup/item_0/text = "white"
+popup/item_0/id = 0
 popup/item_1/text = "red"
 popup/item_1/id = 1
 popup/item_2/text = "green"
