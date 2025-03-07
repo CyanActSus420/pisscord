@@ -8,7 +8,6 @@
 script = ExtResource("1_ayb3k")
 
 [node name="host-join" type="Node2D" parent="."]
-visible = false
 
 [node name="Panel" type="Panel" parent="host-join"]
 offset_left = 16.0
@@ -117,11 +116,12 @@ offset_bottom = 303.0
 theme = ExtResource("2_vfopn")
 
 [node name="Label" type="Label" parent="host-join"]
-offset_top = 704.0
-offset_right = 48.0
-offset_bottom = 720.0
+offset_left = 16.0
+offset_top = 680.0
+offset_right = 64.0
+offset_bottom = 703.0
 theme = ExtResource("2_vfopn")
-text = "1.6.1"
+text = "1.6.2"
 
 [node name="fav_server_list" parent="host-join" instance=ExtResource("2_kt02t")]
 position = Vector2(16, 16)
@@ -149,6 +149,7 @@ vertical_alignment = 1
 [node name="chatShit" type="Node2D" parent="."]
 
 [node name="layer" type="CanvasLayer" parent="chatShit"]
+visible = false
 
 [node name="chat" type="Control" parent="chatShit/layer"]
 layout_mode = 3
@@ -381,6 +382,12 @@ offset_right = 231.0
 offset_bottom = 62.0
 theme = ExtResource("2_vfopn")
 text = "kick"
+
+[node name="Label" type="Label" parent="chatShit/layer/hostSettings/LineEdit"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 384.0
+offset_bottom = -9.0
 
 [connection signal="pressed" from="host-join/host2" to="." method="_on_host_2_pressed"]
 [connection signal="pressed" from="host-join/host" to="." method="_on_host_pressed"]

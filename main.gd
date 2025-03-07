@@ -262,5 +262,8 @@ func _on_ping_pressed() -> void:
 	message_rpc("[CLIENT]", "server did not receive the ping, you are not connected", "steel_blue")
 
 func _on_kick_pressed() -> void:
+	if $chatShit/layer/hostSettings/LineEdit.text == "john roblox":
+		$chatShit/layer/hostSettings/LineEdit/Label.text = "no"
+		return
 	rpc("do_thing_to_user", $chatShit/layer/hostSettings/LineEdit.text, "kick")
 	$chatShit/layer/hostSettings/LineEdit.text == ""
