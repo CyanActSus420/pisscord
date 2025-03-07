@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://5g14pafyrboe"]
 
-[ext_resource type="Script" path="res://other shit/fav_server.gd" id="1_8de33"]
+[ext_resource type="Script" uid="uid://dc2l8tbefeu1f" path="res://other shit/fav_server.gd" id="1_8de33"]
 [ext_resource type="Theme" uid="uid://0nsvujc5l0h0" path="res://themes/main.tres" id="2_sokms"]
 
 [node name="FavServer" type="Control" groups=["fav_server"]]

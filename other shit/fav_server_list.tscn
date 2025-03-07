@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://4kdudmjjrlsc"]
 
-[ext_resource type="Script" path="res://other shit/fav_server_list.gd" id="1_tejiu"]
+[ext_resource type="Script" uid="uid://iq7ctshacdds" path="res://other shit/fav_server_list.gd" id="1_tejiu"]
 [ext_resource type="Theme" uid="uid://0nsvujc5l0h0" path="res://themes/main.tres" id="2_602hr"]
 
 [node name="fav_server_list" type="Node2D"]

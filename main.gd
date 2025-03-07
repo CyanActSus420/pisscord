@@ -267,3 +267,16 @@ func _on_kick_pressed() -> void:
 		return
 	rpc("do_thing_to_user", $chatShit/layer/hostSettings/LineEdit.text, "kick")
 	$chatShit/layer/hostSettings/LineEdit.text == ""
+
+# lol
+func GiveOutTrueOrFalseDependingOnTheVariableThatTheUserHasGivenTheGameAndLaterInputtedIntoTheFunctionThroughCodeAndWhetherOrNotTheUserWantsTheValueEqualToTheOppositeOfTheInputtedValue(TrueOrFalse, Opposite):
+	if Opposite:
+		if TrueOrFalse == true:
+			return true
+		else:
+			return false
+	else:
+		if TrueOrFalse == true:
+			return false
+		else:
+			return true
