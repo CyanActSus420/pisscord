@@ -18,6 +18,7 @@ var default_usrcol_position = Vector2(484, -308)
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset_theme"):
+		SaveData.set_path()
 		reload_theme()
 
 func reload_theme():
