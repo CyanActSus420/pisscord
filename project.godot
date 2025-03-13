@@ -16,7 +16,8 @@ run/main_scene="res://main.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="pisscord"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://c0oncwcqi1bww"
+config/windows_native_icon="res://pisscord.ico"
 
 [autoload]
 

@@ -8,7 +8,6 @@
 script = ExtResource("1_ayb3k")
 
 [node name="host-join" type="Node2D" parent="."]
-visible = false
 
 [node name="Panel" type="Panel" parent="host-join"]
 offset_left = 16.0
@@ -150,6 +149,7 @@ vertical_alignment = 1
 [node name="chatShit" type="Node2D" parent="."]
 
 [node name="layer" type="CanvasLayer" parent="chatShit"]
+visible = false
 
 [node name="chat" type="Control" parent="chatShit/layer"]
 layout_mode = 3
