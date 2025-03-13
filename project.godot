@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="pisscord"
-config/version="1.6.2"
+config/version="1.7"
 run/main_scene="res://main.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="pisscord"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://2b7ffl6panjv"
 
 [autoload]
 

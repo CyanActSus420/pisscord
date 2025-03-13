@@ -122,7 +122,7 @@ offset_top = 680.0
 offset_right = 64.0
 offset_bottom = 703.0
 theme = ExtResource("2_vfopn")
-text = "1.6.2"
+text = "1.7"
 
 [node name="fav_server_list" parent="host-join" instance=ExtResource("2_kt02t")]
 position = Vector2(16, 16)
