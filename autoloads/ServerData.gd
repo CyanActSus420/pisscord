@@ -9,8 +9,10 @@ var connectedUsersString:String = ""
 var connectedUsersList:Array = []
 
 func _ready():
+	if not SaveData.load_from_config("list"):
+		SaveData.save_to_config("list", ["localhost"])
 	favIPs = SaveData.load_from_config("list")
-
+	
 func add_fav_server(serverip):
 	favIPs.append(serverip)
 	SaveData.save_to_config("list", favIPs)

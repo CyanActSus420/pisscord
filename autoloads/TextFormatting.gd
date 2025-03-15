@@ -11,7 +11,7 @@ extends Node
 ## no i am not fixing it, fuck you
 ## never-fucking-mind, it doesnt make it shit itself
 
-var bbcode_formats:Array = ["b", "i", "u", "code", "color", "s"] ## supported tags
+var bbcode_formats:Array = ["b", "i", "u", "code", "color", "s", "right", "left", "center", "rainbow"] ## supported tags
 var temp:Array = [] ## temporary array
 var newText = "" ## formatted message
 
@@ -44,7 +44,7 @@ func format(text):
 	for i in bbcode_formats:
 		
 		match i: 
-			"b", "i", "u", "code", "s": ## if its a simple tag, just add it list of tags
+			"b", "i", "u", "code", "s", "right", "left", "center", "rainbow": ## if its a simple tag, just add it list of tags
 				temp2 = findallsub(newText, "["+i+"]")
 				for j in temp2:
 					temp.append([i, j, len(temp2)])
