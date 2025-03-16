@@ -10,6 +10,7 @@ extends Node2D
 @onready var port_edit: LineEdit = $"host-join/portEdit"
 @onready var user_edit: LineEdit = $"host-join/LineEdit"
 @onready var censor_ip: CheckBox = $"host-join/censorIP"
+@onready var customized_name: CheckButton = $"host-join/custom_name"
 
 # "please wait" screen
 @onready var wait: Node2D = $wait
@@ -31,6 +32,7 @@ extends Node2D
 # host settings screen
 @onready var host_settings: Control = $chatShit/layer/hostSettings
 
+var ACU:bool
 var msg:String
 
 func _ready() -> void:
@@ -40,6 +42,7 @@ func _ready() -> void:
 	wait.visible = false
 	chat.visible = true
 	host_settings.visible = false
+	ACU = customized_name.button_pressed
 	
 	Global.server_ping_timer.timeout.connect(check_users)
 	
@@ -110,14 +113,17 @@ func _on_join_pressed() -> void:
 		triggerError("enter server ip")
 
 @rpc ("any_peer", "call_local")
-func message_rpc(usrnm, data, usrcolor):
+func message_rpc(usrnm, data, usrcolor, tags):
+	print(TextFormatting.remove_tags(usrnm))
 	if !LocalUserData.dedicated_server:
-		if usrcolor == "rainbow":
-			messages.text += str("[rainbow]", usrnm, ": [/rainbow]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
+		if tags:
+			messages.text += str(TextFormatting.format(usrnm), "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
+		elif usrcolor == "rainbow":
+			messages.text += str("[rainbow]", TextFormatting.remove_tags(TextFormatting.format(usrnm)), ": [/rainbow]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
 		elif usrcolor == "piss yellow":
-			messages.text += str("[color=goldenrod]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
+			messages.text += str("[color=goldenrod]", TextFormatting.remove_tags(TextFormatting.format(usrnm)), ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
 		else:
-			messages.text += str("[color=", usrcolor, "]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
+			messages.text += str("[color=", usrcolor, "]", TextFormatting.remove_tags(TextFormatting.format(usrnm)), ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
 
 @rpc ("any_peer", "call_local")
 func do_thing_to_user(usrnm:String, action:String):
@@ -200,7 +206,7 @@ func joined(serverip:String):
 		triggerError("please put an actual username")
 
 func addUser(guests_allowed:bool = true):
-	rpc("message_rpc","[SERVER]",str(LocalUserData.username) + " has joined", "sky_blue")
+	rpc("message_rpc","[SERVER]",str(LocalUserData.username) + " has joined", "sky_blue", false)
 	wait.hide()
 	chat_shit.show()
 
@@ -209,13 +215,12 @@ func triggerError(errortext:String, leave_reason:String = "Client Error"):
 	leave(leave_reason)
 
 func leave(reason:String):
-	rpc("message_rpc","[SERVER]",str(LocalUserData.username) + " has left (" + reason + ")", "sky_blue")
+	rpc("message_rpc","[SERVER]",str(LocalUserData.username) + " has left (" + reason + ")", "sky_blue", false)
 	host_join.hide()
 	wait.show()
 	chat_shit.hide()
 	await get_tree().create_timer(1).timeout
 	LocalUserData.host = false
-	LocalUserData.leave = false
 	host_join.show()
 	wait.hide()
 	messages.text = ""
@@ -223,7 +228,7 @@ func leave(reason:String):
 
 func send_message():
 	if message.text != "" and LocalUserData.connected:
-		rpc("message_rpc",LocalUserData.username,TextFormatting.format(message.text),LocalUserData.color)
+		rpc("message_rpc",LocalUserData.username,TextFormatting.format(message.text),LocalUserData.color, ACU)
 		message.text = ""
 
 func _on_send_pressed() -> void:
@@ -259,7 +264,7 @@ func _on_ping_pressed() -> void:
 	Global.ping_time_out.start()
 	rpc("message_rpc_client","[CLIENT]","server received the ping, you are still connected","steel_blue", LocalUserData.username)
 	await Global.ping_time_out.timeout
-	message_rpc("[CLIENT]", "server did not receive the ping, you are not connected", "steel_blue")
+	message_rpc("[CLIENT]", "server did not receive the ping, you are not connected", "steel_blue", false)
 
 func _on_kick_pressed() -> void:
 	if $chatShit/layer/hostSettings/LineEdit.text == "john roblox":
