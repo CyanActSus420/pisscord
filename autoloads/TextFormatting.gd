@@ -13,18 +13,18 @@ extends Node
 
 var bbcode_formats:Array = ["b", "i", "u", "code", "color", "s", "right", "left", "center", "rainbow"] ## supported tags
 var temp:Array = [] ## temporary array
-var newText = "" ## formatted message
+var newText:String = "" ## formatted message
 
-func sort_ascending(a, b): ## 2D array sorter
+func sort_ascending(a, b) -> bool: ## 2D array sorter
 	if a[1] < b[1]:
 		return true
 	return false
 	
-func findallsub(string, substring): ## find all occurences of a substring in another string
-	var copy = string
-	var res = []
-	var offset = 0
-	var location = 0
+func findallsub(string, substring) -> Array: ## find all occurences of a substring in another string
+	var copy:String = string
+	var res:Array = []
+	var offset:int = 0
+	var location:int = 0
 	while string.find(substring) > -1:
 		location = string.find(substring)
 		offset = len(copy) - len(string)
@@ -32,14 +32,14 @@ func findallsub(string, substring): ## find all occurences of a substring in ano
 		res.append(location+offset)
 	return res
 	
-func format(text):
+func format(text) -> String:
  ## init some values
 	newText = text 
-	var count = 0
-	var temp_text = ""
-	var tag = ""
-	var temp2 = []
-	var usages = 0
+	var count:int = 0
+	var temp_text:String = ""
+	var tag:String = ""
+	var temp2:Array = []
+	var usages:int = 0
 				
 	for i in bbcode_formats:
 		
@@ -75,3 +75,6 @@ func format(text):
 		newText = newText.replace("(/"+i[0].substr(0, i[0].find("="))+")", "[/"+i[0].substr(0, i[0].find("="))+"]")
 		
 	return newText ## return the message duh
+	
+func remove_tags(text) -> String:
+	return text.replace("[", "[lb]")
