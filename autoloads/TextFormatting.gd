@@ -77,4 +77,28 @@ func format(text) -> String:
 	return newText ## return the message duh
 	
 func remove_tags(text) -> String:
-	return text.replace("[", "[lb]")
+	newText = text 
+	var count:int = 0
+	var temp_text:String = ""
+	var tag:String = ""
+	var temp2:Array = []
+	var usages:int = 0
+				
+	for i in bbcode_formats:
+		
+		match i: 
+			"b", "i", "u", "code", "s", "right", "left", "center", "rainbow": ## if its a simple tag, just add it list of tags
+				temp2 = findallsub(newText, "["+i+"]")
+				for j in temp2:
+					temp.append([i, j, len(temp2)])
+				
+			"color": ## if its a tag with arguments, add the tag AND the arguments to the list
+				temp2 = findallsub(newText, "["+i+"=")
+				for j in temp2:
+					temp.append([newText.substr(j+1, newText.substr(j).find("]")-1), j, len(temp2)])
+		
+	for i in temp:
+		newText = newText.replace("["+i[0]+"]", "")
+		newText = newText.replace("[/"+i[0].substr(0, i[0].find("="))+"]", "")
+	
+	return newText
