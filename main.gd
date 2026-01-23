@@ -10,6 +10,7 @@ extends Node2D
 @onready var port_edit: LineEdit = $"host-join/portEdit"
 @onready var user_edit: LineEdit = $"host-join/LineEdit"
 @onready var censor_ip: CheckBox = $"host-join/censorIP"
+@onready var version_label: Label = $"host-join/Label"
 
 # "please wait" screen
 @onready var wait: Node2D = $wait
@@ -40,6 +41,9 @@ func _ready() -> void:
 	wait.visible = false
 	chat.visible = true
 	host_settings.visible = false
+	
+	var version_info = ProjectSettings.get_setting("application/config/version")
+	version_label.text = version_info
 	
 	Global.server_ping_timer.timeout.connect(check_users)
 	
