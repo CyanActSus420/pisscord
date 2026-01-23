@@ -10,7 +10,6 @@ extends Node2D
 @onready var port_edit: LineEdit = $"host-join/portEdit"
 @onready var user_edit: LineEdit = $"host-join/LineEdit"
 @onready var censor_ip: CheckBox = $"host-join/censorIP"
-@onready var customized_name: CheckButton = $"host-join/custom_name"
 
 # "please wait" screen
 @onready var wait: Node2D = $wait
@@ -32,7 +31,6 @@ extends Node2D
 # host settings screen
 @onready var host_settings: Control = $chatShit/layer/hostSettings
 
-var ACU:bool
 var msg:String
 
 func _ready() -> void:
@@ -51,8 +49,10 @@ func _ready() -> void:
 		SaveData.save_to_config("color", "white")
 		
 	if not SaveData.load_from_config("name"):
-		SaveData.save_to_config("name", "Hey guys, did you know that in terms of male human and female Pokémon breeding, Vaporeon is the most compatible Pokémon for humans? Not only are they in the field egg group, which is mostly comprised of mammals, Vaporeon are an average of 3”03’ tall and 63.9 pounds, this means they’re large enough to be able handle human dicks, and with their impressive Base Stats for HP and access to Acid Armor, you can be rough with one. Due to their mostly water based biology, there’s no doubt in my mind that an aroused Vaporeon would be incredibly wet, so wet that you could easily have sex with one for hours without getting sore. They can also learn the moves Attract, Baby-Doll Eyes, Captivate, Charm, and Tail Whip, along with not having fur to hide nipples, so it’d be incredibly easy for one to get you in the mood. With their abilities Water Absorb and Hydration, they can easily recover from fatigue with enough water. No other Pokémon comes close to this level of compatibility. Also, fun fact, if you pull out enough, you can make your Vaporeon turn white. Vaporeon is literally built for human dick. Ungodly defense stat+high HP pool+Acid Armor means it can take cock all day, all shapes and sizes and still come for more ")
-		## fuck you ive put the vaporeon copypasta
+		SaveData.save_to_config("name", "The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly, but gets faster each minute after you hear this signal. [beep] A single lap should be completed each time you hear this sound. [ding] Remember to run in a straight line, and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark, get ready, start.")
+		# the shit above is funny, dont @ me
+		# i couldve put the whole vaporeon copypasta if i wanted, so be happy i only put the fitnessgram pacer test lmfao
+		# - remidu64
 	
 	if LaunchArgs.server:
 		_on_host_2_pressed()
@@ -60,12 +60,11 @@ func _ready() -> void:
 	ThemeManager.reload_theme()
 
 func _physics_process(delta: float) -> void:
-	ACU = customized_name.button_pressed
 	if LocalUserData.connected:
 		if !censor_ip.button_pressed:
-			info.text = "username: %s | connected to: %s | connected users: %s" % [TextFormatting.remove_tags(LocalUserData.username), LocalUserData.serverIP, ServerData.connectedUsers]
+			info.text = "username: %s | connected to: %s | connected users: %s" % [LocalUserData.username, LocalUserData.serverIP, ServerData.connectedUsers]
 		else:
-			info.text = "username: %s | censor ip is on | connected users %s" % [TextFormatting.remove_tags(LocalUserData.username), ServerData.connectedUsers]
+			info.text = "username: %s | censor ip is on | connected users %s" % [LocalUserData.username, ServerData.connectedUsers]
 	
 	if Input.is_action_just_pressed("send") and !Input.is_action_pressed("shift") and !host_settings.visible:
 		send_message()
@@ -111,18 +110,14 @@ func _on_join_pressed() -> void:
 		triggerError("enter server ip")
 
 @rpc ("any_peer", "call_local")
-func message_rpc(usrnm, data, usrcolor, tags):
-	print(TextFormatting.format(usrnm))
+func message_rpc(usrnm, data, usrcolor):
 	if !LocalUserData.dedicated_server:
-		if tags:
-			messages.text += str(TextFormatting.format(usrnm), "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
-		elif usrcolor == "rainbow":
-			messages.text += str("[rainbow]", TextFormatting.remove_tags(TextFormatting.format(usrnm)), ": [/rainbow]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
+		if usrcolor == "rainbow":
+			messages.text += str("[rainbow]", usrnm, ": [/rainbow]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
 		elif usrcolor == "piss yellow":
-			messages.text += str("[color=goldenrod]", TextFormatting.remove_tags(TextFormatting.format(usrnm)), ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
+			messages.text += str("[color=goldenrod]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
 		else:
-			messages.text += str("[color=", usrcolor, "]", TextFormatting.remove_tags(TextFormatting.format(usrnm)), ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
-		print(messages.text)
+			messages.text += str("[color=", usrcolor, "]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
 
 @rpc ("any_peer", "call_local")
 func do_thing_to_user(usrnm:String, action:String):
@@ -138,10 +133,7 @@ func do_thing_to_user(usrnm:String, action:String):
 func message_rpc_client(usrnm, data, usrcolor, usrsending):
 	if usrsending == LocalUserData.username:
 		Global.ping_time_out.stop()
-		if ACU:
-			messages.text += str("\n", "[color=", usrcolor, "]", TextFormatting.format(usrnm), ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data)
-		else:
-			messages.text += str("\n", "[color=", usrcolor, "]", TextFormatting.remove_tags(usrnm), ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data)
+		messages.text += str("\n", "[color=", usrcolor, "]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data)
 
 @rpc ("any_peer", "call_local")
 func send_out_username_request():
@@ -208,12 +200,8 @@ func joined(serverip:String):
 		triggerError("please put an actual username")
 
 func addUser(guests_allowed:bool = true):
-	if ACU:
-		rpc("message_rpc","[SERVER]",TextFormatting.format(LocalUserData.username) + " has joined", "sky_blue", false)
-	else:
-		rpc("message_rpc","[SERVER]",TextFormatting.remove_tags(LocalUserData.username) + " has joined", "sky_blue", false)
+	rpc("message_rpc","[SERVER]",str(LocalUserData.username) + " has joined", "sky_blue")
 	wait.hide()
-	
 	chat_shit.show()
 
 func triggerError(errortext:String, leave_reason:String = "Client Error"):
@@ -221,15 +209,13 @@ func triggerError(errortext:String, leave_reason:String = "Client Error"):
 	leave(leave_reason)
 
 func leave(reason:String):
-	if ACU:
-		rpc("message_rpc","[SERVER]",TextFormatting.format(LocalUserData.username) + " has left (" + reason + ")", "sky_blue", false)
-	else:
-		rpc("message_rpc","[SERVER]",TextFormatting.remove_tags(LocalUserData.username) + " has left (" + reason + ")", "sky_blue", false)
+	rpc("message_rpc","[SERVER]",str(LocalUserData.username) + " has left (" + reason + ")", "sky_blue")
 	host_join.hide()
 	wait.show()
 	chat_shit.hide()
 	await get_tree().create_timer(1).timeout
 	LocalUserData.host = false
+	LocalUserData.leave = false
 	host_join.show()
 	wait.hide()
 	messages.text = ""
@@ -237,7 +223,7 @@ func leave(reason:String):
 
 func send_message():
 	if message.text != "" and LocalUserData.connected:
-		rpc("message_rpc",LocalUserData.username,TextFormatting.format(message.text),LocalUserData.color, ACU)
+		rpc("message_rpc",LocalUserData.username,TextFormatting.format(message.text),LocalUserData.color)
 		message.text = ""
 
 func _on_send_pressed() -> void:
@@ -271,9 +257,9 @@ func _on_fav_pressed() -> void:
 func _on_ping_pressed() -> void:
 	print("shit")
 	Global.ping_time_out.start()
-	rpc("message_rpc_client","[CLIENT]","server received the ping, you are still connected\n","steel_blue", LocalUserData.username)
+	rpc("message_rpc_client","[CLIENT]","server received the ping, you are still connected","steel_blue", LocalUserData.username)
 	await Global.ping_time_out.timeout
-	message_rpc("[CLIENT]", "server did not receive the ping, you are not connected\n", "steel_blue", false)
+	message_rpc("[CLIENT]", "server did not receive the ping, you are not connected", "steel_blue")
 
 func _on_kick_pressed() -> void:
 	if $chatShit/layer/hostSettings/LineEdit.text == "john roblox":
