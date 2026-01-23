@@ -259,7 +259,6 @@ func _on_fav_pressed() -> void:
 	$"host-join/fav_server_list".reload()
 
 func _on_ping_pressed() -> void:
-	print("shit")
 	Global.ping_time_out.start()
 	rpc("message_rpc_client","[CLIENT]","server received the ping, you are still connected","steel_blue", LocalUserData.username)
 	await Global.ping_time_out.timeout
@@ -270,7 +269,7 @@ func _on_kick_pressed() -> void:
 		$chatShit/layer/hostSettings/LineEdit/Label.text = "no"
 		return
 	rpc("do_thing_to_user", $chatShit/layer/hostSettings/LineEdit.text, "kick")
-	$chatShit/layer/hostSettings/LineEdit.text == ""
+	$chatShit/layer/hostSettings/LineEdit.text = ""
 
 # lol
 func GiveOutTrueOrFalseDependingOnTheVariableThatTheUserHasGivenTheGameAndLaterInputtedIntoTheFunctionThroughCodeAndWhetherOrNotTheUserWantsTheValueEqualToTheOppositeOfTheInputtedValue(TrueOrFalse, Opposite):

@@ -79,5 +79,4 @@ func load_custom_theme_property(shit:String, property_name:String):
 	
 	var value = user_theme.get_value(shit, property_name)
 	
-	print(value)
 	return value
