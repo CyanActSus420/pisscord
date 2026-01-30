@@ -1,23 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://c287o2rpdexd8"]
+[gd_scene format=3 uid="uid://c287o2rpdexd8"]
 
 [ext_resource type="Script" uid="uid://j1b5ql5fgqi2" path="res://main.gd" id="1_ayb3k"]
 [ext_resource type="PackedScene" uid="uid://4kdudmjjrlsc" path="res://other shit/fav_server_list.tscn" id="2_kt02t"]
 [ext_resource type="Theme" uid="uid://0nsvujc5l0h0" path="res://themes/main.tres" id="2_vfopn"]
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node2D" unique_id=2000297415]
 script = ExtResource("1_ayb3k")
 
-[node name="host-join" type="Node2D" parent="."]
+[node name="host-join" type="Node2D" parent="." unique_id=389724809]
 visible = false
 
-[node name="Panel" type="Panel" parent="host-join"]
+[node name="Panel" type="Panel" parent="host-join" unique_id=1970354916]
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 1256.0
 offset_bottom = 704.0
 theme = ExtResource("2_vfopn")
 
-[node name="host2" type="Button" parent="host-join"]
+[node name="host2" type="Button" parent="host-join" unique_id=571858914]
 offset_left = 904.0
 offset_top = 664.0
 offset_right = 1248.0
@@ -28,7 +28,7 @@ in order to join the server, you'll need to join on another client"
 theme = ExtResource("2_vfopn")
 text = "host dedicated server"
 
-[node name="host" type="Button" parent="host-join"]
+[node name="host" type="Button" parent="host-join" unique_id=287180848]
 offset_left = 632.0
 offset_top = 408.0
 offset_right = 704.0
@@ -37,7 +37,7 @@ tooltip_text = "host and join a server"
 theme = ExtResource("2_vfopn")
 text = "host"
 
-[node name="join2" type="Button" parent="host-join"]
+[node name="join2" type="Button" parent="host-join" unique_id=967551727]
 offset_left = 1032.0
 offset_top = 624.0
 offset_right = 1246.0
@@ -46,7 +46,7 @@ tooltip_text = "join a server as a guest"
 theme = ExtResource("2_vfopn")
 text = "join as guest"
 
-[node name="fav" type="Button" parent="host-join"]
+[node name="fav" type="Button" parent="host-join" unique_id=1693543705]
 offset_left = 576.0
 offset_top = 448.0
 offset_right = 960.0
@@ -55,7 +55,7 @@ tooltip_text = "add currently inputed IP to favorites"
 theme = ExtResource("2_vfopn")
 text = "add server to favorites"
 
-[node name="join" type="Button" parent="host-join"]
+[node name="join" type="Button" parent="host-join" unique_id=1154199968]
 offset_left = 832.0
 offset_top = 408.0
 offset_right = 904.0
@@ -64,7 +64,7 @@ tooltip_text = "join a server"
 theme = ExtResource("2_vfopn")
 text = "join"
 
-[node name="LineEdit" type="LineEdit" parent="host-join"]
+[node name="LineEdit" type="LineEdit" parent="host-join" unique_id=1025737160]
 offset_left = 576.0
 offset_top = 312.0
 offset_right = 960.0
@@ -72,7 +72,7 @@ offset_bottom = 344.0
 theme = ExtResource("2_vfopn")
 max_length = 20
 
-[node name="Label" type="Label" parent="host-join/LineEdit"]
+[node name="Label" type="Label" parent="host-join/LineEdit" unique_id=2113301875]
 layout_mode = 0
 offset_left = -160.0
 offset_right = -5.0
@@ -81,7 +81,7 @@ text = "username:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ipEdit" type="LineEdit" parent="host-join"]
+[node name="ipEdit" type="LineEdit" parent="host-join" unique_id=1747667576]
 offset_left = 576.0
 offset_top = 352.0
 offset_right = 960.0
@@ -90,7 +90,7 @@ theme = ExtResource("2_vfopn")
 text = "localhost"
 max_length = 20
 
-[node name="Label" type="Label" parent="host-join/ipEdit"]
+[node name="Label" type="Label" parent="host-join/ipEdit" unique_id=1253358227]
 layout_mode = 0
 offset_left = -160.0
 offset_right = -5.0
@@ -100,7 +100,7 @@ text = "server ip:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="portEdit" type="LineEdit" parent="host-join"]
+[node name="portEdit" type="LineEdit" parent="host-join" unique_id=388604015]
 offset_left = 1824.0
 offset_top = -416.0
 offset_right = 2024.0
@@ -109,14 +109,14 @@ theme = ExtResource("2_vfopn")
 placeholder_text = "enter server port"
 max_length = 20
 
-[node name="errorLabel" type="Label" parent="host-join"]
+[node name="errorLabel" type="Label" parent="host-join" unique_id=1539068763]
 offset_left = 456.0
 offset_top = 280.0
 offset_right = 496.0
 offset_bottom = 303.0
 theme = ExtResource("2_vfopn")
 
-[node name="Label" type="Label" parent="host-join"]
+[node name="Label" type="Label" parent="host-join" unique_id=1068544039]
 offset_left = 16.0
 offset_top = 680.0
 offset_right = 64.0
@@ -124,10 +124,10 @@ offset_bottom = 703.0
 theme = ExtResource("2_vfopn")
 text = "1.7"
 
-[node name="fav_server_list" parent="host-join" instance=ExtResource("2_kt02t")]
+[node name="fav_server_list" parent="host-join" unique_id=2142232814 instance=ExtResource("2_kt02t")]
 position = Vector2(16, 16)
 
-[node name="censorIP" type="CheckBox" parent="host-join"]
+[node name="censorIP" type="CheckBox" parent="host-join" unique_id=1447670235]
 offset_left = 968.0
 offset_top = 352.0
 offset_right = 1144.0
@@ -135,10 +135,10 @@ offset_bottom = 383.0
 theme = ExtResource("2_vfopn")
 text = "censor IP"
 
-[node name="wait" type="Node2D" parent="."]
+[node name="wait" type="Node2D" parent="." unique_id=1384133191]
 visible = false
 
-[node name="Label" type="Label" parent="wait"]
+[node name="Label" type="Label" parent="wait" unique_id=1488250416]
 offset_right = 1280.0
 offset_bottom = 720.0
 theme = ExtResource("2_vfopn")
@@ -147,11 +147,11 @@ text = "please wait..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="chatShit" type="Node2D" parent="."]
+[node name="chatShit" type="Node2D" parent="." unique_id=1336445382]
 
-[node name="layer" type="CanvasLayer" parent="chatShit"]
+[node name="layer" type="CanvasLayer" parent="chatShit" unique_id=2033398403]
 
-[node name="chat" type="Control" parent="chatShit/layer"]
+[node name="chat" type="Control" parent="chatShit/layer" unique_id=957729330]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -165,7 +165,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="messages-old" type="TextEdit" parent="chatShit/layer/chat"]
+[node name="messages-old" type="TextEdit" parent="chatShit/layer/chat" unique_id=249203128]
 self_modulate = Color(1, 1, 1, 0.505882)
 layout_mode = 0
 offset_left = -612.0
@@ -175,7 +175,7 @@ offset_bottom = 236.0
 theme = ExtResource("2_vfopn")
 editable = false
 
-[node name="messages" type="RichTextLabel" parent="chatShit/layer/chat"]
+[node name="messages" type="RichTextLabel" parent="chatShit/layer/chat" unique_id=635785376]
 layout_mode = 0
 offset_left = -612.0
 offset_top = -332.0
@@ -188,7 +188,7 @@ bbcode_enabled = true
 scroll_following = true
 selection_enabled = true
 
-[node name="message" type="TextEdit" parent="chatShit/layer/chat"]
+[node name="message" type="TextEdit" parent="chatShit/layer/chat" unique_id=481446856]
 layout_mode = 0
 offset_left = -612.0
 offset_top = 244.0
@@ -197,7 +197,7 @@ offset_bottom = 307.0
 theme = ExtResource("2_vfopn")
 placeholder_text = "type yo shit here"
 
-[node name="ping" type="Button" parent="chatShit/layer/chat"]
+[node name="ping" type="Button" parent="chatShit/layer/chat" unique_id=845633669]
 layout_mode = 0
 offset_left = 292.0
 offset_top = 340.0
@@ -206,7 +206,7 @@ offset_bottom = 371.0
 theme = ExtResource("2_vfopn")
 text = "ping server"
 
-[node name="leave" type="Button" parent="chatShit/layer/chat"]
+[node name="leave" type="Button" parent="chatShit/layer/chat" unique_id=1764397792]
 layout_mode = 0
 offset_left = -612.0
 offset_top = 340.0
@@ -215,7 +215,7 @@ offset_bottom = 371.0
 theme = ExtResource("2_vfopn")
 text = "leave"
 
-[node name="send" type="Button" parent="chatShit/layer/chat"]
+[node name="send" type="Button" parent="chatShit/layer/chat" unique_id=1450107475]
 layout_mode = 0
 offset_left = 580.0
 offset_top = 276.0
@@ -224,7 +224,7 @@ offset_bottom = 307.0
 theme = ExtResource("2_vfopn")
 text = "send"
 
-[node name="info2" type="Label" parent="chatShit/layer/chat"]
+[node name="info2" type="Label" parent="chatShit/layer/chat" unique_id=357542152]
 visible = false
 layout_mode = 0
 offset_left = -612.0
@@ -234,7 +234,7 @@ offset_bottom = 379.0
 theme = ExtResource("2_vfopn")
 text = "press ` or F7 to open host settings"
 
-[node name="info" type="Label" parent="chatShit/layer/chat"]
+[node name="info" type="Label" parent="chatShit/layer/chat" unique_id=1024078453]
 layout_mode = 0
 offset_left = -612.0
 offset_top = 316.0
@@ -243,7 +243,7 @@ offset_bottom = 332.0
 theme = ExtResource("2_vfopn")
 text = "username: john roblox | connected to: localhost | ping: 2137ms"
 
-[node name="usernameColor" type="OptionButton" parent="chatShit/layer/chat"]
+[node name="usernameColor" type="OptionButton" parent="chatShit/layer/chat" unique_id=435859379]
 layout_mode = 0
 offset_left = 484.0
 offset_top = -308.0
@@ -289,7 +289,7 @@ popup/item_16/id = 16
 popup/item_17/text = "piss yellow"
 popup/item_17/id = 17
 
-[node name="Label" type="Label" parent="chatShit/layer/chat/usernameColor"]
+[node name="Label" type="Label" parent="chatShit/layer/chat/usernameColor" unique_id=2029248058]
 layout_mode = 0
 offset_top = -24.0
 offset_right = 92.0
@@ -297,7 +297,7 @@ offset_bottom = -1.0
 theme = ExtResource("2_vfopn")
 text = "name color:"
 
-[node name="clear" type="Button" parent="chatShit/layer/chat"]
+[node name="clear" type="Button" parent="chatShit/layer/chat" unique_id=527502487]
 layout_mode = 0
 offset_left = 484.0
 offset_top = 340.0
@@ -306,7 +306,7 @@ offset_bottom = 371.0
 theme = ExtResource("2_vfopn")
 text = "clear chat"
 
-[node name="MarginContainer" type="MarginContainer" parent="chatShit/layer/chat"]
+[node name="MarginContainer" type="MarginContainer" parent="chatShit/layer/chat" unique_id=1309005430]
 layout_mode = 0
 offset_left = -556.0
 offset_top = -304.0
@@ -314,7 +314,7 @@ offset_right = -516.0
 offset_bottom = -264.0
 theme = ExtResource("2_vfopn")
 
-[node name="hostSettings" type="Control" parent="chatShit/layer"]
+[node name="hostSettings" type="Control" parent="chatShit/layer" unique_id=1877084792]
 visible = false
 layout_mode = 3
 anchors_preset = 8
@@ -325,7 +325,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="chatShit/layer/hostSettings"]
+[node name="ColorRect" type="ColorRect" parent="chatShit/layer/hostSettings" unique_id=1056128809]
 layout_mode = 0
 offset_left = -640.0
 offset_top = -360.0
@@ -334,7 +334,7 @@ offset_bottom = 359.0
 theme = ExtResource("2_vfopn")
 color = Color(0.230315, 0.230315, 0.230315, 0.72549)
 
-[node name="Label2" type="RichTextLabel" parent="chatShit/layer/hostSettings"]
+[node name="Label2" type="RichTextLabel" parent="chatShit/layer/hostSettings" unique_id=870944574]
 layout_mode = 0
 offset_left = -624.0
 offset_top = -296.0
@@ -342,7 +342,7 @@ offset_bottom = 152.0
 theme = ExtResource("2_vfopn")
 text = "connected users: "
 
-[node name="Label" type="Label" parent="chatShit/layer/hostSettings"]
+[node name="Label" type="Label" parent="chatShit/layer/hostSettings" unique_id=1248273456]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -356,7 +356,7 @@ theme_override_font_sizes/font_size = 64
 text = "host settings"
 horizontal_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="chatShit/layer/hostSettings"]
+[node name="LineEdit" type="LineEdit" parent="chatShit/layer/hostSettings" unique_id=1185461408]
 layout_mode = 0
 offset_left = -576.0
 offset_top = 216.0
@@ -365,7 +365,7 @@ offset_bottom = 247.0
 theme = ExtResource("2_vfopn")
 placeholder_text = "enter username here..."
 
-[node name="ban" type="Button" parent="chatShit/layer/hostSettings/LineEdit"]
+[node name="ban" type="Button" parent="chatShit/layer/hostSettings/LineEdit" unique_id=1759269530]
 visible = false
 layout_mode = 0
 offset_left = 256.0
@@ -375,7 +375,7 @@ offset_bottom = 62.0
 theme = ExtResource("2_vfopn")
 text = "ban username"
 
-[node name="kick" type="Button" parent="chatShit/layer/hostSettings/LineEdit"]
+[node name="kick" type="Button" parent="chatShit/layer/hostSettings/LineEdit" unique_id=717054079]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 31.0
@@ -384,7 +384,7 @@ offset_bottom = 62.0
 theme = ExtResource("2_vfopn")
 text = "kick"
 
-[node name="Label" type="Label" parent="chatShit/layer/hostSettings/LineEdit"]
+[node name="Label" type="Label" parent="chatShit/layer/hostSettings/LineEdit" unique_id=1563559989]
 layout_mode = 0
 offset_top = -32.0
 offset_right = 384.0

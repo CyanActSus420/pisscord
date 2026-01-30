@@ -117,11 +117,11 @@ func _on_join_pressed() -> void:
 func message_rpc(usrnm, data, usrcolor):
 	if !LocalUserData.dedicated_server:
 		if usrcolor == "rainbow":
-			messages.text += str("[rainbow]", usrnm, ": [/rainbow]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
+			messages.append_text(str("[rainbow]", usrnm, ": [/rainbow]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n"))
 		elif usrcolor == "piss yellow":
-			messages.text += str("[color=goldenrod]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
+			messages.append_text(str("[color=goldenrod]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n"))
 		else:
-			messages.text += str("[color=", usrcolor, "]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n")
+			messages.append_text(str("[color=", usrcolor, "]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data, "\n"))
 
 @rpc ("any_peer", "call_local")
 func do_thing_to_user(usrnm:String, action:String):
@@ -137,7 +137,7 @@ func do_thing_to_user(usrnm:String, action:String):
 func message_rpc_client(usrnm, data, usrcolor, usrsending):
 	if usrsending == LocalUserData.username:
 		Global.ping_time_out.stop()
-		messages.text += str("\n", "[color=", usrcolor, "]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data)
+		messages.append_text(str("\n", "[color=", usrcolor, "]", usrnm, ": [/color]", "[color=dim_gray](", Time.get_time_string_from_system(), ")[/color]\n", data))
 
 @rpc ("any_peer", "call_local")
 func send_out_username_request():
@@ -195,7 +195,7 @@ func joined(serverip:String):
 		if LocalUserData.username == "john roblox":
 			triggerError("this username is not allowed (don't ask.)")
 		
-		
+		LocalUserData.username = TextFormatting.format(LocalUserData.username) # this single line of code is pisscord 1.7.1
 		LocalUserData.serverIP = serverip
 		LocalUserData.serverPort = int(ip_edit.text)
 		LocalUserData.connected = true
@@ -253,7 +253,7 @@ func _on_leave_pressed() -> void:
 
 func _on_fav_pressed() -> void:
 	if ServerData.favIPs.size() == 9:
-		triggerError("cant add more servers to fav list (i gotta rewrite this shit FAST)") # this shit aint never gon get rewrote lmfao
+		triggerError("cant add more servers to fav list (i gotta rewrite this shit FAST)") # this shit will never get rewritten
 		return
 	ServerData.add_fav_server(ip_edit.text)
 	$"host-join/fav_server_list".reload()
