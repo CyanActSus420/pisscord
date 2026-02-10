@@ -11,6 +11,11 @@ func _ready() -> void:
 	get_tree().set_multiplayer(SceneMultiplayer.new(), self.get_path())
 	multiplayer.multiplayer_peer = LocalUserData.peer
 	multiplayer.allow_object_decoding = true
+	
+	var data:MessageData = MessageData.new()
+	data.Username = "server"
+	data.MessageContent = "%s has joined" % LocalUserData.Username
+	rpc("rpc_message", data)
 
 ## -------------------------------------------------------
 ## [ EVERYTHING THAT ISN'T THE THINGS BELOW THIS SECTION ]
