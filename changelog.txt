@@ -1,2 +1,0 @@
-+updated to godot 4.5
--removed the advanced name customization since it was broken
