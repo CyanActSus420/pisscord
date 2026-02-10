@@ -75,5 +75,4 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "some useless data"
 
-[connection signal="pressed" from="LeaveButton" to="." method="_on_leave_button_pressed"]
 [connection signal="pressed" from="SendButton" to="." method="_on_send_button_pressed"]

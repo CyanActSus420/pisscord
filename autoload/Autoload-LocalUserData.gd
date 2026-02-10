@@ -3,4 +3,4 @@ extends Node
 var peer:ENetMultiplayerPeer = null
 var client = null
 
-var Username:String = "ass"
+@export var Username:String = "ass"
