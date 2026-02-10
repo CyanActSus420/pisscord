@@ -12,9 +12,9 @@ func _ready() -> void:
 	multiplayer.multiplayer_peer = LocalUserData.peer
 	multiplayer.allow_object_decoding = true
 
-## ------------------------------------------
-## [ EVERYTHING THAT ISN'T THE THINGS BELOW ]
-## ------------------------------------------
+## -------------------------------------------------------
+## [ EVERYTHING THAT ISN'T THE THINGS BELOW THIS SECTION ]
+## -------------------------------------------------------
 
 ## function that begins the process of sending messages
 func send_message() -> void:
@@ -31,6 +31,12 @@ func send_message() -> void:
 
 func _on_send_button_pressed() -> void:
 	send_message()
+
+func _on_leave_button_pressed() -> void:
+	multiplayer.multiplayer_peer = null
+	LocalUserData.client = null
+	LocalUserData.peer = null
+	get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 
 ## -----------------
 ## [ RPC FUNCTIONS ]
