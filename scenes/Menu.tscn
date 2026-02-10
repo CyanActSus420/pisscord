@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://wjasyui0m14q"]
+
+[ext_resource type="Script" uid="uid://bkwu8oxwnuklk" path="res://src/State-Menu.gd" id="1_xdvgc"]
+
+[node name="Menu" type="Control" unique_id=1673035933]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xdvgc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1367340972]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 512.0
+offset_right = -512.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="VBoxContainer" unique_id=649891215]
+custom_minimum_size = Vector2(305, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+placeholder_text = "username"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=852871610]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ServerIpInput" type="LineEdit" parent="VBoxContainer/HBoxContainer2" unique_id=1241546605]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "localhost"
+placeholder_text = "server IP"
+
+[node name="PortInput" type="LineEdit" parent="VBoxContainer/HBoxContainer2" unique_id=443000875]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "19132"
+placeholder_text = "server IP"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=469047546]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="JoinButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=2134604884]
+layout_mode = 2
+text = "join"
+
+[node name="JoinAsGuestButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=626887617]
+layout_mode = 2
+text = "join as guest"
+
+[node name="HostButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=536379554]
+layout_mode = 2
+tooltip_text = "creates a server (requires port forwarding)
+
+to set your desired port use the input field above"
+text = "host"
+
+[node name="VersionLabel" type="Label" parent="." unique_id=687949720]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "2.0"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/JoinAsGuestButton" to="." method="_on_join_as_guest_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HostButton" to="." method="_on_host_button_pressed"]

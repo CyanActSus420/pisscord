@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bdas7x07h47br"]
+
+[ext_resource type="Script" uid="uid://d3qmrlakfi4bv" path="res://src/State-Chat.gd" id="1_uca72"]
+
+[node name="Chat" type="Control" unique_id=1397328979]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uca72")
+
+[node name="MessagesPanel" type="Panel" parent="." unique_id=185783447]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.8
+offset_right = 0.00012207031
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Messages" type="RichTextLabel" parent="MessagesPanel" unique_id=114196611]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[node name="MessageInput" type="TextEdit" parent="." unique_id=240132079]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.81
+anchor_right = 0.99
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "put your message here"
+
+[node name="LeaveButton" type="Button" parent="." unique_id=1022430955]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.95
+anchor_right = 0.05
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+text = "leave"
+
+[node name="SendButton" type="Button" parent="." unique_id=315806790]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 0.911
+anchor_right = 0.99
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+text = "send"
+
+[node name="DataLabel" type="Label" parent="." unique_id=989049078]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.9
+anchor_right = 0.946
+anchor_bottom = 0.944
+grow_horizontal = 2
+grow_vertical = 2
+text = "some useless data"
+
+[connection signal="pressed" from="SendButton" to="." method="_on_send_button_pressed"]

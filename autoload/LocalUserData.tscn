@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bnjhdg1aohk0c"]
+
+[ext_resource type="Script" uid="uid://gcqnti5aewpr" path="res://autoload/Autoload-LocalUserData.gd" id="1_bdgis"]
+
+[node name="LocalUserData" type="Node" unique_id=986596888]
+script = ExtResource("1_bdgis")
